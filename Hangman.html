@@ -1,0 +1,78 @@
+<html>
+	<head>
+		<title>Hangman Game</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<div style='display: inline-block; vertical-align: top;'>
+				<h1>Lets Play</h1>
+				<input type="text" id="newitem">
+				<button onclick"setGuess()">Guess</button>
+				<button onclick"setNull()">Cancle</button>
+		</div>
+
+		<p id='myGuess'>Enter a single letter and click Guess to begin</p>
+		<p id="n"></p>
+
+		<div>
+			<script>
+				var words = [
+					"javascript", 
+					"monkey", 
+					"amazing", 
+					"pancake"
+					];
+
+				var word = words[Math.floor(Math.random() * words.length)];
+				var asnwerArray = [""];
+				
+				for(var i = 0; i < word.length; i++){
+					answerArray[i] = "_";
+				}
+				
+				var remainingLetters = word.length;
+
+				alert(answerArray.join(" "));
+
+				while(remainingLetters > 0){
+					var userText = document.write("#newitem").value;
+
+					alert(answerArray.join(" "));
+					
+					var guess = prompt("Guess a letter, or click Cancel to stop Playing.");
+					//Setting Guess to null. Should exit the loop.
+					function setNull(){
+						remainingLetters = 0;
+					}
+					//Setting guess = to userInput.
+					function setGuess(){
+						guess.textContent = userText;
+						document.getElementById('n').innerHTML = answerArray;
+						document.getElementById('n').innerHTML = remainingLetters;
+
+					}
+
+					if(guess === null){
+						break;
+					}
+					else if(guess.length !== 1){
+						alert("Please enter a single letter.");
+					}
+					else {
+						for(var j = 0; j < word.length; j++) {
+							if(word.charAt[j] === guess){
+								answerArray[j].innerHTML = guess;
+								remainingLetters--;
+							}
+						}
+					}
+				}
+
+				alert(answerArray.join(" "));
+				alert("Good Job! The answer was " + word);
+
+			</script>
+		</div>	
+	</body>
+</html>
